@@ -22,10 +22,22 @@ export default class App extends Component<Props> {
   changeText = text =>{
     this.setState({text});
   }
+  clear = () => {
+    this.setState({text : ''})
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <TextInput style={styles.textInput} onChangeText={this.changeText}/>
+        <TextInput 
+          style={styles.textInput} 
+          onChangeText={this.changeText}
+          value={this.state.text}
+        />
+        <Button
+          title="clear"
+          onPress={this.clear}
+        />
         <Text style={styles.paragraph}>{this.state.text}</Text>
       </View>
     );

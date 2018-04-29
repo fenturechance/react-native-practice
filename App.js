@@ -10,7 +10,8 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  Button
 } from 'react-native';
 
 import LotsOfGreetings from './screens/LotsOfGreetings';
@@ -26,10 +27,17 @@ const paragraph = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Labo
 type Props = {};
 
 export default class App extends Component<Props> {
+  state = {
+    text : 'hello'
+  }
+  handleButton = () =>{
+    this.setState({ text : 'hello React' });
+  }
   render() {
     return (
       <View style={styles.container}>
-        <LotsOfGreetings />
+        <Text>{this.state.text}</Text>
+        <Button title="Press me" onPress={this.handleButton} />
       </View>
     );
   }

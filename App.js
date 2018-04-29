@@ -11,30 +11,22 @@ import {
   StyleSheet,
   Text,
   View,
-  Button
+  Button,
+  TextInput
 } from 'react-native';
 
 export default class App extends Component<Props> {
   state = {
-    content : 'nothing',
-    isLoading : false,
+    text : '123',
   }
-  handleButton = () =>{
-    this.setState({ isLoading : true });
-    setTimeout(()=>{
-      this.setState({
-        content : 'received something',
-        isLoading : false
-      })
-    },1500)
+  changeText = text =>{
+    this.setState({text});
   }
   render() {
     return (
       <View style={styles.container}>
-        <Text>
-          {this.state.isLoading ? 'loading....' : this.state.content }
-        </Text>
-        <Button title="Press me" onPress={this.handleButton} />
+        <TextInput style={styles.textInput} onChangeText={this.changeText}/>
+        <Text style={styles.paragraph}>{this.state.text}</Text>
       </View>
     );
   }
@@ -52,9 +44,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  paragraph : {
+    margin : 24,
+    fontSize : 18,
+    fontWeight : 'bold',
+    textAlign : 'center',
+    color : '#34495e'
   },
+  textInput: {
+    backgroundColor : '#ddd',
+    width : 100
+  }
 });

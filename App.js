@@ -14,29 +14,26 @@ import {
   Button
 } from 'react-native';
 
-import LotsOfGreetings from './screens/LotsOfGreetings';
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
-
-const paragraph = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore non assumenda tempora harum voluptas voluptate officiis iure nobis modi tenetur. Voluptas quo esse sapiente atque suscipit a sint! Voluptas, deserunt!'
-type Props = {};
-
 export default class App extends Component<Props> {
   state = {
-    text : 'hello'
+    content : 'nothing',
+    isLoading : false,
   }
   handleButton = () =>{
-    this.setState({ text : 'hello React' });
+    this.setState({ isLoading : true });
+    setTimeout(()=>{
+      this.setState({
+        content : 'received something',
+        isLoading : false
+      })
+    },1500)
   }
   render() {
     return (
       <View style={styles.container}>
-        <Text>{this.state.text}</Text>
+        <Text>
+          {this.state.isLoading ? 'loading....' : this.state.content }
+        </Text>
         <Button title="Press me" onPress={this.handleButton} />
       </View>
     );

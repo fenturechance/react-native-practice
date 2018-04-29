@@ -5,14 +5,15 @@
  */
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   Platform,
   StyleSheet,
   Text,
-  View,
-  Alert,
-  TextInput
+  View
 } from 'react-native';
+
+import LotsOfGreetings from './screens/LotsOfGreetings';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -24,19 +25,11 @@ const instructions = Platform.select({
 const paragraph = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore non assumenda tempora harum voluptas voluptate officiis iure nobis modi tenetur. Voluptas quo esse sapiente atque suscipit a sint! Voluptas, deserunt!'
 type Props = {};
 
-class Greeting extends Component {
-  render(){
-    return (
-      <Text>Hello {this.props.name}</Text>
-    )
-  }
-}
-
 export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <Greeting name="React"></Greeting>
+        <LotsOfGreetings />
       </View>
     );
   }

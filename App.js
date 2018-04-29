@@ -9,7 +9,9 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  Alert,
+  TextInput
 } from 'react-native';
 
 const instructions = Platform.select({
@@ -19,31 +21,22 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-const title ='title 5566';
-const array = [1,2,3];
-const enable = false;
+const paragraph = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore non assumenda tempora harum voluptas voluptate officiis iure nobis modi tenetur. Voluptas quo esse sapiente atque suscipit a sint! Voluptas, deserunt!'
 type Props = {};
-export default class App extends Component<Props> {
 
-  getEnable = (enable) => {
-    if (enable) {
-      return <Text>Enable</Text>
-    } else {
-      return <Text>Disable</Text>
-    }
-  };
+class Greeting extends Component {
+  render(){
+    return (
+      <Text>Hello {this.props.name}</Text>
+    )
+  }
+}
+
+export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        { /*this.getEnable(enable)*/ }
-        <Text 
-          //style={styles.welcome}
-        >
-          String : hello 
-        </Text>
-        <Text>{title}</Text>
-        <Text>{array}</Text>
-        <Text>{true},{false},{null},{undefined}</Text>
+        <Greeting name="React"></Greeting>
       </View>
     );
   }

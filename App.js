@@ -14,31 +14,25 @@ import {
   Button,
   TextInput
 } from 'react-native';
+import LifeCycleLogs from './components/LifeCycleLogs'
 
 export default class App extends Component<Props> {
   state = {
-    text : '123',
-  }
-  changeText = text =>{
-    this.setState({text});
-  }
-  clear = () => {
-    this.setState({text : ''})
+    render : false
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <TextInput 
-          style={styles.textInput} 
-          onChangeText={this.changeText}
-          value={this.state.text}
-        />
+        {this.state.render ? <LifeCycleLogs count={3}/> : null}
         <Button
-          title="clear"
-          onPress={this.clear}
-        />
-        <Text style={styles.paragraph}>{this.state.text}</Text>
+          title="Toggle counter render"
+          onPress={()=>
+            this.setState(prevState=>({
+              render: !prevState.render 
+            }))
+          }
+        ></Button>
       </View>
     );
   }

@@ -12,7 +12,7 @@ export default class LifeCycleLogs extends Component {
         console.log('componentWillMount');
     }
     componentDidMount() {
-        console.log('componentWillMount');
+        console.log('componentDidMount');
     }
     componentWillReceiveProps(nextProps) {
         console.log('componentWillReceiveProps',nextProps);

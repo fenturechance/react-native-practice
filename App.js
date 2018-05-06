@@ -15,6 +15,7 @@ import {
   TextInput
 } from 'react-native';
 import LifeCycleLogs from './components/LifeCycleLogs'
+import CountDownTimer from './components/CountDownTimer'
 
 export default class App extends Component<Props> {
   state = {
@@ -32,10 +33,8 @@ export default class App extends Component<Props> {
   
   render() {
     return (
-      <View style={styles.container}>
-        <Text>
-          {this.state.isLoading ? 'loading....' : this.state.content}
-        </Text>
+      <View style={styles.container} >
+        <CountDownTimer seconds={5} onFinished={()=>{alert('hello')}}></CountDownTimer>
       </View>
     );
   }

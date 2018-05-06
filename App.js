@@ -12,10 +12,13 @@ import {
   Text,
   View,
   Button,
-  TextInput
+  TextInput,
+  Image
 } from 'react-native';
 import LifeCycleLogs from './components/LifeCycleLogs'
 import CountDownTimer from './components/CountDownTimer'
+
+const imageUrl = 'https://i.ytimg.com/vi/NN9LaU2NlLM/maxresdefault.jpg';
 
 export default class App extends Component<Props> {
   state = {
@@ -34,7 +37,11 @@ export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container} >
-        <CountDownTimer seconds={5} onFinished={()=>{alert('hello')}}></CountDownTimer>
+        <Image source={require('./assets/squirtle.jpg')} style={styles.image}></Image>
+        <Image source={{ uri: imageUrl }} style={styles.image}></Image>
+        <Text style={styles.paragraph}>
+          AAAAA
+        </Text>
       </View>
     );
   }
@@ -62,5 +69,9 @@ const styles = StyleSheet.create({
   textInput: {
     backgroundColor : '#ddd',
     width : 100
+  },
+  image : {
+    width : 300 , 
+    height : 300
   }
 });

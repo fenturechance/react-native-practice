@@ -18,21 +18,24 @@ import LifeCycleLogs from './components/LifeCycleLogs'
 
 export default class App extends Component<Props> {
   state = {
-    render : false
+    content : null ,
+    isLoading : true
   }
-
+  componentDidMount(){
+    setTimeout(() => {
+      this.setState({
+        content : 'Received Response',
+        isLoading : false
+      })
+    }, 300);
+  };
+  
   render() {
     return (
       <View style={styles.container}>
-        {this.state.render ? <LifeCycleLogs count={3}/> : null}
-        <Button
-          title="Toggle counter render"
-          onPress={()=>
-            this.setState(prevState=>({
-              render: !prevState.render 
-            }))
-          }
-        ></Button>
+        <Text>
+          {this.state.isLoading ? 'loading....' : this.state.content}
+        </Text>
       </View>
     );
   }
